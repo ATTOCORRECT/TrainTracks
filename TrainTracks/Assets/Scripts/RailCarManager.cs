@@ -5,7 +5,7 @@ using UnityEngine;
 public class RailCarManager : MonoBehaviour
 {
     public GameObject Engine;
-    //RailEngineScript engineScript;
+    RailEngineManager engineManager;
 
     float railPosition = 0;
     public float carOffset;
@@ -13,17 +13,17 @@ public class RailCarManager : MonoBehaviour
 
     void Start()
     {
-        //engineScript = Engine.GetComponent<RailEngineScript>();
+        engineManager = Engine.GetComponent<RailEngineManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        //railPosition = engineScript.railPosition;
+        railPosition = engineManager.railPosition;
 
-        //transform.position = engineScript.RailPositionToWorldPosition(railPosition - carOffset * carPosition);
-        //Vector2 direction = engineScript.RailPositionToTrackDirection(railPosition - carOffset * carPosition);
-        //transform.eulerAngles = new Vector3(0, 0, (Mathf.Atan2(direction.y ,direction.x) * Mathf.Rad2Deg));
+        transform.position = engineManager.RailPositionToWorldPosition(railPosition - carOffset * carPosition);
+        Vector2 direction = engineManager.RailPositionToTrackDirection(railPosition - carOffset * carPosition);
+        transform.eulerAngles = new Vector3(0, 0, (Mathf.Atan2(direction.y ,direction.x) * Mathf.Rad2Deg));
 
     }
 }

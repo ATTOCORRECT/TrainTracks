@@ -8,10 +8,10 @@ public class RailEngineManager : MonoBehaviour
     GameObject[] Rails;
     RailManager[] RailManagers;
 
-    float[] cumulativeArcLength;
+    [HideInInspector] public float[] cumulativeArcLength;
 
     int railSegmentPosition = 0; // which track segment is currently being occupied
-    float railPosition = 0;
+    public float railPosition = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -58,7 +58,7 @@ public class RailEngineManager : MonoBehaviour
         return (x % m + m) % m;
     }
 
-    Vector2 RailPositionToWorldPosition(float position)
+    public Vector2 RailPositionToWorldPosition(float position)
     {
         float totalArcLength = cumulativeArcLength[cumulativeArcLength.Length - 1];
         position = mod(position, totalArcLength);
@@ -74,7 +74,7 @@ public class RailEngineManager : MonoBehaviour
         return RailManagers[railSegmentPosition].DistanceToPoint(position - cumulativeArcLength[railSegmentPosition]);
     }
 
-    Vector2 RailPositionToTrackDirection(float position)
+    public Vector2 RailPositionToTrackDirection(float position)
     {
         Vector2 a = RailPositionToWorldPosition(position - .1f);
         Vector2 b = RailPositionToWorldPosition(position + .1f);

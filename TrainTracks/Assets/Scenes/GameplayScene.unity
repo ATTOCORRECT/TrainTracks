@@ -140,7 +140,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5529128431550794744, guid: eb62f9b0a664ac840b67408f8654d7fb, type: 3}
       propertyPath: m_RootOrder
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 5529128431550794744, guid: eb62f9b0a664ac840b67408f8654d7fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -379,6 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c47079c1ef423c418f1771d5877e581, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  TrackingObject: {fileID: 1534981774}
 --- !u!114 &519420034
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -391,9 +392,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6a160d838ff8b4b4693ac20007e008c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_AssetsPPU: 16
-  m_RefResolutionX: 256
-  m_RefResolutionY: 144
+  m_AssetsPPU: 32
+  m_RefResolutionX: 512
+  m_RefResolutionY: 288
   m_UpscaleRT: 1
   m_PixelSnapping: 0
   m_CropFrameX: 1
@@ -416,7 +417,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5529128431550794744, guid: eb62f9b0a664ac840b67408f8654d7fb, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5529128431550794744, guid: eb62f9b0a664ac840b67408f8654d7fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -664,7 +665,7 @@ PrefabInstance:
       objectReference: {fileID: 1534981774}
     - target: {fileID: 5529128431550794744, guid: eb62f9b0a664ac840b67408f8654d7fb, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 5529128431550794744, guid: eb62f9b0a664ac840b67408f8654d7fb, type: 3}
       propertyPath: m_LocalPosition.x
@@ -721,7 +722,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 7888481481604522020, guid: 9835987c4f9c7b44caa8f6e0c1215dfa, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7888481481604522020, guid: 9835987c4f9c7b44caa8f6e0c1215dfa, type: 3}
       propertyPath: m_LocalPosition.x
