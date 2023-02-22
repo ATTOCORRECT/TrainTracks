@@ -46,11 +46,6 @@ public class RailManager : MonoBehaviour
             cumulativeArcLengthLUT[i] = cumulativeArcLength;
         }
         arcLength = cumulativeArcLengthLUT[cumulativeArcLengthLUT.Length - 1];
-
-        Debug.Log(arcLength);
-        Debug.Log(DistanceToT(cumulativeArcLengthLUT, arcLength));
-        Debug.Log(DistanceToPoint(arcLength));
-        Debug.Log("---");
     }
 
     // Update is called once per frame
