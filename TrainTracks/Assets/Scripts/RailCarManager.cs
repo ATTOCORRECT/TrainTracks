@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RailCarScript : MonoBehaviour
+public class RailCarManager : MonoBehaviour
 {
     public GameObject Engine;
     //RailEngineScript engineScript;

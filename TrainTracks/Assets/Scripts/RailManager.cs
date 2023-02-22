@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RailScript : MonoBehaviour
+public class RailManager : MonoBehaviour
 {
     Vector2[] point = new Vector2[4];
 
