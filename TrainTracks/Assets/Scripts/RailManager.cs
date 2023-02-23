@@ -8,6 +8,8 @@ public class RailManager : MonoBehaviour
 
     LineRenderer LineRenderer;
 
+    int pointSamples = 32; // number of samples the bezier gets, curve resolution
+    Vector2[] bezierSamples;
     float[] cumulativeArcLengthLUT;
     [HideInInspector] public float arcLength; 
     public int sequenceNumber; // assign in unity
@@ -17,14 +19,28 @@ public class RailManager : MonoBehaviour
     {
         LineRenderer = gameObject.GetComponent<LineRenderer>();
 
+        LineRenderer.positionCount = pointSamples;
+        bezierSamples = new Vector2[pointSamples];
+        
+        cumulativeArcLengthLUT = new float[bezierSamples.Length];
+        cumulativeArcLengthLUT[0] = 0;
+
+        UpdateBezierCurve();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+
+    void UpdateBezierCurve()
+    {
+        // get bezier handle positions
         for (int i = 0; i < 4; i++) 
         {
             point[i] = transform.GetChild(i).GetComponent<Transform>().position;
         }
-       
-        int pointSamples = 32; // number of samples the bezier gets, curve resolution
-        LineRenderer.positionCount = pointSamples;
-        Vector2[] bezierSamples = new Vector2[pointSamples];
 
         // sample points on bezier
         for (int i = 0; i < pointSamples; i++) 
@@ -34,24 +50,14 @@ public class RailManager : MonoBehaviour
             bezierSamples[i] = point;
         }
 
-
-
         // arcLength aproximation and lookup table
         float cumulativeArcLength = 0;
-        cumulativeArcLengthLUT = new float[bezierSamples.Length];
-        cumulativeArcLengthLUT[0] = 0;
         for (int i = 1; i < (bezierSamples.Length); i++) 
         {
             cumulativeArcLength += (bezierSamples[i] - bezierSamples[i - 1]).magnitude;
             cumulativeArcLengthLUT[i] = cumulativeArcLength;
         }
         arcLength = cumulativeArcLengthLUT[cumulativeArcLengthLUT.Length - 1];
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     public Vector2 DistanceToPoint(float distance)

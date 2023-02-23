@@ -14,8 +14,13 @@ public class CameraManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+    }
+
+    private void FixedUpdate()
+    {
         Vector3 position = TrackingObject.GetComponent<Transform>().position;
         position += new Vector3(0, 0, -10);
-        transform.position = Vector3.Lerp(transform.position, position, 0.01f);
+        transform.position = Vector3.Lerp(transform.position, position, 0.1f);
     }
 }
