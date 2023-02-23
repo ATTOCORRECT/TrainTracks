@@ -12,6 +12,8 @@ public class RailEngineManager : MonoBehaviour
 
     int railSegmentPosition = 0; // which track segment is currently being occupied
     public float railPosition = 0;
+    [HideInInspector] public float velocity = 0;
+    float targetVelocity = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -42,11 +44,17 @@ public class RailEngineManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void FixedUpdate()
     {
-        railPosition += .1f;
+        velocity = Mathf.Lerp(velocity, targetVelocity, .01f);
+        if (Mathf.Abs(velocity - 0) < 0.005f && targetVelocity == 0)
+        {
+            velocity = 0;
+        }
+
+        railPosition += velocity;
 
         transform.position = RailPositionToWorldPosition(railPosition);
         Vector2 direction = RailPositionToTrackDirection(railPosition);
@@ -79,5 +87,10 @@ public class RailEngineManager : MonoBehaviour
         Vector2 a = RailPositionToWorldPosition(position - .1f);
         Vector2 b = RailPositionToWorldPosition(position + .1f);
         return (b - a).normalized;
+    }
+
+    public void SetTargetVelocity(float targetVelocity)
+    {
+        this.targetVelocity = targetVelocity;
     }
 }
