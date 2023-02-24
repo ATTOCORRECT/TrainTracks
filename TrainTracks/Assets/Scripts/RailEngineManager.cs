@@ -9,11 +9,11 @@ public class RailEngineManager : MonoBehaviour
     RailManager[] RailManagers;
 
     [HideInInspector] public float[] cumulativeArcLength;
-
+    bool breaking = false;
     int railSegmentPosition = 0; // which track segment is currently being occupied
     public float railPosition = 0;
     [HideInInspector] public float velocity = 0;
-    float targetVelocity = 0;
+    [HideInInspector] public float targetVelocity = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -38,7 +38,6 @@ public class RailEngineManager : MonoBehaviour
         {
             cumulativeArcLength[i + 1] = cumulativeArcLength[i] + RailManagers[i].arcLength;
         }
-        Debug.Log(cumulativeArcLength);
     }
 
     // Update is called once per frame
@@ -48,6 +47,11 @@ public class RailEngineManager : MonoBehaviour
     }
     private void FixedUpdate()
     {
+        if (breaking)
+        {
+            velocity = Mathf.Lerp(velocity, 0, .1f);
+        }
+
         velocity = Mathf.Lerp(velocity, targetVelocity, .01f);
         if (Mathf.Abs(velocity - 0) < 0.005f && targetVelocity == 0)
         {
@@ -92,5 +96,10 @@ public class RailEngineManager : MonoBehaviour
     public void SetTargetVelocity(float targetVelocity)
     {
         this.targetVelocity = targetVelocity;
+    }
+
+    public void Breaking(bool breaking)
+    {
+        this.breaking = breaking;
     }
 }
